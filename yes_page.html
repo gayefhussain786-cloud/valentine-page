@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knew you would say yes!</title>
+    <link rel="stylesheet" href="./yes_style.css">
+</head>
+<body onscroll="handleScroll()">
+
+<!-- ROTATE SCREEN OVERLAY -->
+<div id="rotate-overlay">
+  <div class="rotate-box">
+    <p>Rotate your device for the full experience 💖</p>
+    <div class="rotate-icon">↻</div>
+  </div>
+</div>
+
+<!-- Floating decorative elements -->
+<div class="floating-hearts">
+  <div class="float-heart heart-1">💕</div>
+  <div class="float-heart heart-2">💗</div>
+  <div class="float-heart heart-3">💖</div>
+  <div class="float-heart heart-4">💝</div>
+  <div class="float-heart heart-5">💓</div>
+  <div class="float-heart heart-6">💞</div>
+</div>
+
+<!-- Sparkle overlays -->
+<div class="sparkles">
+  <div class="sparkle sparkle-1">✨</div>
+  <div class="sparkle sparkle-2">⭐</div>
+  <div class="sparkle sparkle-3">✨</div>
+  <div class="sparkle sparkle-4">⭐</div>
+  <div class="sparkle sparkle-5">✨</div>
+  <div class="sparkle sparkle-6">⭐</div>
+  <div class="sparkle sparkle-7">✨</div>
+  <div class="sparkle sparkle-8">⭐</div>
+</div>
+
+<!-- Corner decorations -->
+<div class="corner-deco top-left">🌸</div>
+<div class="corner-deco top-right">🎀</div>
+<div class="corner-deco bottom-left">🌺</div>
+<div class="corner-deco bottom-right">🦋</div>
+
+<!-- ======================= -->
+<!-- PAGE 1 -->
+<!-- ======================= -->
+<section class="top-section">
+  <h1 class="header_text">Knew you would say yes!</h1>
+
+  <div class="gif_container">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+  </div>
+</section>
+
+<!-- ======================= -->
+<!-- PAGE 2 – BURN ZONE -->
+<!-- ======================= -->
+<section class="heart-section">
+  <div class="light-engulf"></div>
+
+  <div class="bg-layer"></div>
+
+  <div class="collage-wrap">
+    <div class="scrap scrap-left"></div>
+    <div class="scrap scrap-right"></div>
+    <div class="tape tape-left"></div>
+    <div class="tape tape-right"></div>
+
+    <div class="burn-container" onclick="burnPaper()">
+      <img src="images/burn_paper.png" class="burn-paper" />
+      <span class="burn-text">CLICK THE HEART</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= -->
+<!-- NAV CONTROLS -->
+<!-- ======================= -->
+
+<!-- BACK GROUP -->
+<div class="nav-container left">
+  <p class="nav-text">Go back</p>
+  <button class="nav-btn back-btn" onclick="goBack()">←</button>
+</div>
+
+<!-- SCROLL GROUP -->
+<div class="nav-container right">
+  <p class="nav-text">Venture further</p>
+  <button class="nav-btn scroll-btn" onclick="scrollDown()">↓</button>
+</div>
+
+<!-- ======================= -->
+<!-- SCRIPTS -->
+<!-- ======================= -->
+
+<script>
+function goBack() {
+  window.history.back();
+}
+
+function hideNav() {
+  document.querySelectorAll('.nav-container')
+    .forEach(el => el.classList.add('ui-hidden'));
+}
+
+function showNav() {
+  document.querySelectorAll('.nav-container')
+    .forEach(el => el.classList.remove('ui-hidden'));
+}
+
+// Auto toggle based on scroll position
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const viewportHeight = window.innerHeight;
+  
+  // Fade out overlays as we approach second page
+  const scrollProgress = scrollY / viewportHeight;
+  const floatingHearts = document.querySelector('.floating-hearts');
+  const sparkles = document.querySelector('.sparkles');
+  const cornerDecos = document.querySelectorAll('.corner-deco');
+  
+  if (scrollProgress > 0.3) {
+    if (floatingHearts) floatingHearts.classList.add('fading');
+    if (sparkles) sparkles.classList.add('fading');
+    cornerDecos.forEach(deco => deco.classList.add('fading'));
+  } else {
+    if (floatingHearts) floatingHearts.classList.remove('fading');
+    if (sparkles) sparkles.classList.remove('fading');
+    cornerDecos.forEach(deco => deco.classList.remove('fading'));
+  }
+  
+  // Hide nav
+  if (scrollY > viewportHeight * 0.3) {
+    hideNav();
+  } else {
+    showNav();
+  }
+});
+
+// Scroll button behavior
+function scrollDown() {
+  hideNav();
+
+  const section = document.querySelector('.heart-section');
+  section.classList.add('fading');
+
+  setTimeout(() => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth"
+    });
+  }, 400);
+}
+
+// Parallax effect for decorations
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const hearts = document.querySelectorAll('.float-heart');
+  const sparkles = document.querySelectorAll('.sparkle');
+  
+  hearts.forEach((heart, index) => {
+    const speed = 0.5 + (index * 0.1);
+    heart.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+  
+  sparkles.forEach((sparkle, index) => {
+    const speed = 0.3 + (index * 0.05);
+    sparkle.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.5}deg)`;
+  });
+});
+
+// Add interactive sparkle effect on mouse move
+document.addEventListener('mousemove', (e) => {
+  if (Math.random() > 0.95) {
+    createSparkle(e.pageX, e.pageY);
+  }
+});
+
+function createSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'cursor-sparkle';
+  sparkle.textContent = '✨';
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  document.body.appendChild(sparkle);
+  
+  setTimeout(() => {
+    sparkle.remove();
+  }, 1000);
+}
+</script>
+
+<script src="orientation.js"></script>
+<script src="yes_script.js"></script>
+<script src="yes_burn.js"></script>
+
+</body>
+</html>

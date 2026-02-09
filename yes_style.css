@@ -1,0 +1,1040 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.header_text {
+    font-size: 3em;
+    color: #d32f2f;
+}
+
+.gif_container img {
+    width: 100%; 
+    max-width: 500px; 
+    height: auto; 
+}
+.back-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #f84d67, #ffd1dc);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(229, 24, 55, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 999;
+}
+
+.back-bubble:hover {
+  transform: scale(1.15);
+  box-shadow: 0 10px 25px rgba(183, 29, 52, 0.9);
+}
+/* FULL SCREEN SECTIONS */
+.top-section,
+.heart-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* PAPER CARD */
+.paper-card {
+  background: #fdf1e7;
+  padding: 60px 100px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* TORN EDGE EFFECT */
+.paper-card::before,
+.paper-card::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #fdf1e7;
+  top: -30px;
+  transform: rotate(45deg);
+}
+
+.paper-card::before {
+  left: -40px;
+}
+
+.paper-card::after {
+  right: -40px;
+}
+
+/* HEART */
+.layered-heart {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 25px;
+  cursor: pointer;
+  animation: heartBeat 1.2s infinite;
+}
+
+/* HEART SHAPE */
+.heart-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, #ff9acb, #ff3366);
+  clip-path: polygon(
+    50% 92%,
+    90% 55%,
+    90% 30%,
+    70% 10%,
+    50% 25%,
+    30% 10%,
+    10% 30%,
+    10% 55%
+  );
+}
+
+/* GLOW LAYERS */
+.heart-layer.back {
+  transform: scale(1.4);
+  filter: blur(15px);
+  opacity: 0.5;
+}
+
+.heart-layer.mid {
+  transform: scale(1.15);
+  filter: blur(6px);
+  opacity: 0.8;
+}
+
+.heart-layer.front {
+  transform: scale(1);
+}
+
+/* TEXT */
+.heart-text {
+  letter-spacing: 3px;
+  font-size: 16px;
+  color: #b74b4b;
+}
+
+/* HEARTBEAT */
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.15); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+/* RESET BODY FLOW */
+body {
+  margin: 0;
+  display: block;
+}
+
+/* FULL SCREEN SECTIONS */
+.top-section,
+.heart-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+
+@keyframes hintPulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* PAPER CARD */
+/* ============================= */
+/* BACKGROUND (BEIGE PATTERN) */
+/* ============================= */
+
+.heart-section {
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(#efe0cd, #ead6c1);
+  background-size: 22px 22px, cover;
+}
+
+/* ============================= */
+/* COLLAGE WRAPPER */
+/* ============================= */
+
+.collage-wrap {
+  position: relative;
+  padding: 80px;
+}
+
+/* ============================= */
+/* SCRAP PIECES */
+/* ============================= */
+
+.scrap {
+  position: absolute;
+  width: 120px;
+  height: 80px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,0.08),
+      rgba(0,0,0,0.08) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    #f3f3f3;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  opacity: 0.9;
+}
+
+.scrap-left {
+  top: 40px;
+  left: 30px;
+  transform: rotate(-18deg);
+}
+
+.scrap-right {
+  bottom: 40px;
+  right: 40px;
+  transform: rotate(22deg);
+}
+
+/* ============================= */
+/* TAPE */
+/* ============================= */
+
+.tape {
+  position: absolute;
+  width: 100px;
+  height: 34px;
+  background: linear-gradient(
+    rgba(255, 200, 150, 0.8),
+    rgba(230, 170, 120, 0.8)
+  );
+  border-radius: 3px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  opacity: 0.85;
+}
+
+.tape-left {
+  top: 20px;
+  left: 90px;
+  transform: rotate(-12deg);
+}
+
+.tape-right {
+  top: 30px;
+  right: 90px;
+  transform: rotate(9deg);
+}
+
+/* ============================= */
+/* TORN PAPER */
+/* ============================= */
+
+.torn-paper {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,0.015),
+      rgba(0,0,0,0.015) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    #fdfaf5;
+
+  padding: 80px 140px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.35),
+    inset 0 0 25px rgba(0,0,0,0.08);
+
+  clip-path: polygon(
+    4% 2%, 12% 0%, 25% 1%, 45% 0%, 68% 2%, 90% 1%, 98% 6%,
+    100% 20%, 99% 45%, 98% 75%, 94% 96%, 75% 100%,
+    45% 98%, 20% 100%, 6% 94%, 0% 70%, 1% 40%, 2% 15%
+  );
+
+  transform: rotate(-1.5deg);
+  text-align: center;
+}
+
+/* ============================= */
+/* PAPER HEART */
+/* ============================= */
+
+.paper-heart {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 30px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(45deg);
+  background:
+    linear-gradient(135deg, #ffb3c9, #ff6f9c),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,0.05),
+      rgba(0,0,0,0.05) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+
+  box-shadow:
+    inset 0 0 12px rgba(255,255,255,0.5),
+    0 15px 30px rgba(0,0,0,0.35);
+}
+
+/* HEART LOBES */
+.paper-heart::before,
+.paper-heart::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background:
+    linear-gradient(135deg, #ffb3c9, #ff6f9c),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0,0,0,0.05),
+      rgba(0,0,0,0.05) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  border-radius: 50%;
+}
+
+.paper-heart::before {
+  top: -70px;
+  left: 0;
+}
+
+.paper-heart::after {
+  left: -70px;
+  top: 0;
+}
+
+/* FOLD SHADOW */
+.paper-heart::after {
+  box-shadow: inset -8px -8px 12px rgba(0,0,0,0.15);
+}
+
+/* ============================= */
+/* TEXT */
+/* ============================= */
+
+.heart-text {
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: #b07a6a;
+  font-family: "Courier New", monospace;
+  opacity: 0.9;
+}
+
+/* ============================= */
+/* HOVER FEEL */
+/* ============================= */
+
+.paper-heart:hover {
+  transform: rotate(45deg) scale(1.08);
+}
+
+
+/* HEART HOVER MAGIC */
+.folded-heart:hover {
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* STAMP TEXT */
+.heart-text {
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: 5px;
+  font-size: 14px;
+  color: #a86060;
+  font-family: "Courier New", monospace;
+}
+
+/* HEART TEXT */
+.heart-text {
+  text-align: center;
+  margin-top: 25px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: #b06a6a;
+  font-family: monospace;
+}
+
+
+/* BLENDED TRANSITION BETWEEN SECTIONS */
+.top-section {
+  position: relative;
+}
+
+.top-section::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 231, 231, 0) 0%,
+    #f3e4d3 100%
+  );
+  pointer-events: none;
+}
+
+/* HEART SECTION BACKGROUND SOFT & WARM */
+.heart-section {
+  background: radial-gradient(circle at center, #f6eadc 0%, #ead6c1 100%);
+}
+@keyframes breathe {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.08); }
+  100% { filter: brightness(1); }
+}
+.heart-section { animation: breathe 6s ease-in-out infinite; }
+/* ========================= */
+/* LANDSCAPE LOCK OVERLAY */
+/* ========================= */
+
+#rotate-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #f3d6dc, #e8bfc7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.rotate-box {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  animation: pulseRotate 2s infinite;
+}
+
+.rotate-box p {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  color: #b44b5a;
+  margin-bottom: 20px;
+}
+
+.rotate-icon {
+  font-size: 48px;
+  color: #ff6f91;
+}
+
+@keyframes pulseRotate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Keep desktop look in tablet landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+  body {
+    zoom: 0.9;
+  }
+}
+/* BOTTOM RIGHT NAV CONTROLS */
+.nav-controls {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
+
+/* MATCH BACK BUTTON STYLE */
+.scroll-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff7aa2, #ffb3c6);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(255,120,160,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 20px 40px rgba(255,120,160,0.8);
+}
+
+/* PROMPT TEXT */
+.nav-hints {
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #c26b6b;
+  text-align: center;
+  opacity: 0.9;
+}
+/* BACK BUTTON — BOTTOM LEFT */
+.back-container {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 100;
+}
+
+.back-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff7aa2, #ffb3c6);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(255,120,160,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 20px 40px rgba(255,120,160,0.8);
+}
+/* NAV GROUP BASE */
+.nav-container {
+  position: fixed;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
+
+/* LEFT & RIGHT POSITIONS */
+.nav-container.left {
+  left: 30px;
+}
+
+.nav-container.right {
+  right: 30px;
+}
+
+/* TEXT ABOVE BUTTON */
+.nav-text {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #d96a7a;
+  text-align: center;
+  opacity: 0.85;
+  max-width: 180px;
+  line-height: 1.4;
+}
+
+/* BUTTON STYLE (MATCHING BOTH) */
+.nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff7aa2, #ffb3c6);
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(255,120,160,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 20px 40px rgba(255,120,160,0.8);
+}
+/* ========================= */
+/* FULLSCREEN BACKGROUND */
+/* ========================= */
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background: url("images/bgimg.png") center / cover no-repeat;
+  z-index: 1;
+  
+}
+
+
+/* ========================= */
+/* GATE CONTAINER            */
+/* ========================= */
+
+/* Fixed to viewport so the heart image fills the screen properly */
+/* ========================= */
+/* PAPER GATE SYSTEM       */
+/* ========================= */
+
+/* ========================= */
+/* PAPER GATE SYSTEM    */
+/* ========================= */
+
+/* Floating Animation */
+@keyframes paperFloat {
+  0% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-15px) rotate(0.5deg); }
+  100% { transform: translateY(0) rotate(-1.5deg); }
+}
+
+.burn-container {
+  position: relative;
+  width: 520px;
+  max-width: 90vw;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  cursor: pointer;
+  z-index: 5;
+  perspective: 2000px; /* Gives the door swing 3D depth */
+  animation: paperFloat 4s ease-in-out infinite; /* Floating effect */
+  transition: transform 0.8s ease;
+}
+
+/* Stop floating when splitting */
+.burn-container.splitting {
+  animation: none;
+}
+
+.gate-left, .gate-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 2.7s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.1));
+}
+
+.gate-left { left: 0; transform-origin: left center; }
+.gate-right { right: 0; transform-origin: right center; }
+
+.gate-left img { left: 0; position: absolute; height: 100%; }
+.gate-right img { right: 0; position: absolute; height: 100%; }
+
+/* ========================= */
+/* FULLSCREEN LIGHT FILL  */
+/* ========================= */
+
+.light-engulf {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: #f9ccd6; /* Soft Baby Pink */
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.light-engulf.active {
+  opacity: 1;
+}
+
+/* Drifting into the secret page */
+body.drifting {
+  transition: transform 3s ease-in, filter 2s ease-in;
+  transform: scale(1.1);
+  filter: brightness(1.1) sepia(0.2) hue-rotate(-10deg); /* Adds a warm pinkish wash */
+}
+
+.burn-text {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #a66a3f;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.burn-text.hidden {
+  opacity: 0;
+}
+
+
+/* ========================= */
+/* BACK BUTTON               */
+/* ========================= */
+
+.back-bubble {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background: #ff8fa3;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(255,100,150,0.5);
+  transition: transform 0.2s ease;
+}
+
+.back-bubble:hover { transform: scale(1.1); }
+
+/* Scroll fade */
+.heart-section {
+  transition: opacity 0.6s ease, filter 0.6s ease;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heart-section.fading {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+/* NAV UI FADE */
+.nav-container {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.nav-container.ui-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.heart-text,
+.burn-text {
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 3px;
+}
+
+/* ========================= */
+/* ADDED ANIMATIONS & OVERLAYS */
+/* ========================= */
+
+/* Corner decorations */
+.corner-deco {
+  position: fixed;
+  font-size: 3.5rem;
+  z-index: 200;
+  opacity: 0;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  animation: rotateIn 1s ease-out forwards, gentleSpin 20s linear infinite;
+  animation-delay: 0.3s, 1.3s;
+  transition: opacity 0.6s ease;
+}
+
+.corner-deco.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.corner-deco.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.corner-deco.bottom-left {
+  bottom: 155px;
+  left: 20px;
+}
+
+.corner-deco.bottom-right {
+  bottom: 155px;
+  right: 20px;
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-360deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes gentleSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Floating hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+.float-heart {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
+  animation: floatUp 8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(255,100,150,0.3));
+}
+
+.heart-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  font-size: 1.8rem;
+}
+
+.heart-2 {
+  top: 60%;
+  left: 80%;
+  animation-delay: 1.5s;
+  font-size: 2.2rem;
+}
+
+.heart-3 {
+  top: 40%;
+  right: 15%;
+  animation-delay: 3s;
+  font-size: 1.5rem;
+}
+
+.heart-4 {
+  bottom: 30%;
+  left: 25%;
+  animation-delay: 4.5s;
+  font-size: 2rem;
+}
+
+.heart-5 {
+  top: 70%;
+  right: 35%;
+  animation-delay: 6s;
+  font-size: 1.7rem;
+}
+
+.heart-6 {
+  top: 35%;
+  left: 50%;
+  animation-delay: 2.5s;
+  font-size: 2.3rem;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.8);
+  }
+  20% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-30px) rotate(10deg) scale(1.1);
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) rotate(-10deg) scale(0.8);
+  }
+}
+
+/* Sparkles */
+.sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.6s ease;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.sparkle-1 {
+  top: 15%;
+  left: 20%;
+  animation-delay: 0.2s;
+}
+
+.sparkle-2 {
+  top: 25%;
+  right: 25%;
+  animation-delay: 0.8s;
+}
+
+.sparkle-3 {
+  top: 55%;
+  left: 15%;
+  animation-delay: 1.4s;
+}
+
+.sparkle-4 {
+  bottom: 35%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.sparkle-5 {
+  top: 45%;
+  left: 70%;
+  animation-delay: 2.6s;
+}
+
+.sparkle-6 {
+  bottom: 25%;
+  left: 40%;
+  animation-delay: 3.2s;
+}
+
+.sparkle-7 {
+  top: 65%;
+  right: 45%;
+  animation-delay: 1s;
+}
+
+.sparkle-8 {
+  top: 35%;
+  left: 35%;
+  animation-delay: 1.8s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+/* Cursor sparkles */
+.cursor-sparkle {
+  position: absolute;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkleDisappear 1s ease-out forwards;
+}
+
+@keyframes sparkleDisappear {
+  0% {
+    opacity: 1;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg) translateY(-30px);
+  }
+}
+
+/* Fade out overlays when scrolling */
+.floating-hearts.fading,
+.sparkles.fading {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.corner-deco.fading {
+  opacity: 0 !important;
+  animation: none !important;
+  pointer-events: none;
+}
+/* Styling the text containers to look like cute labels */
+.nav-text {
+  font-family: "Courier New", monospace; /* Matches the heart-section style */
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ff3366; /* Deep pink for readability */
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white bubble */
+  padding: 8px 18px;
+  border-radius: 30px; /* Fully rounded edges */
+  border: 2px dashed #ffb3c6; /* Cute dashed 'stitch' border */
+  box-shadow: 0 4px 10px rgba(255, 122, 162, 0.2);
+  
+  /* Adding a gentle floating animation */
+  animation: navFloat 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* Specific tilt for each side to look like stickers */
+.nav-container.left .nav-text {
+  transform: rotate(-3deg);
+}
+
+.nav-container.right .nav-text {
+  transform: rotate(3deg);
+}
+
+/* Hover effect: The label 'pops' when you hover over the area */
+.nav-container:hover .nav-text {
+  background: #fff;
+  transform: scale(1.1) rotate(0deg);
+  box-shadow: 0 6px 15px rgba(255, 122, 162, 0.4);
+}
+
+@keyframes navFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+}
+
+/* Ensure the right side floats with its own tilt */
+.nav-container.right .nav-text {
+  animation: navFloatRight 3.2s ease-in-out infinite;
+}
+
+@keyframes navFloatRight {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-5px) rotate(-1deg); }
+}

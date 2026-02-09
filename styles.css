@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #d32f2f;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .yes-button {
+  font-size: 1.5em;
+  padding: 12px 25px;
+  margin-right: 10px;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffd1dc);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 5px 15px rgba(255, 182, 193, 0.5);
+}
+
+  
+  .no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .gif_container img {
+  width: 450px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+/* ========================= */
+/* LANDSCAPE LOCK OVERLAY */
+/* ========================= */
+
+#rotate-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #f3d6dc, #e8bfc7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.rotate-box {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  animation: pulseRotate 2s infinite;
+}
+
+.rotate-box p {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  color: #b44b5a;
+  margin-bottom: 20px;
+}
+
+.rotate-icon {
+  font-size: 48px;
+  color: #ff6f91;
+}
+
+@keyframes pulseRotate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Keep desktop look in tablet landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+  body {
+    zoom: 0.9;
+  }
+}
+.yes-button:active {
+    transform: scale(0.95);
+    filter: brightness(1.2);
+    transition: 0.1s;
+}
